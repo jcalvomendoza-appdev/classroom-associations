@@ -19,6 +19,10 @@
     </th>
 
     <th>
+      Department
+    </th>
+    
+    <th>
     </th>
   </tr>
 
@@ -30,6 +34,10 @@
 
     <td>
       <%= course.title %>
+    </td>
+    
+    <td>
+      <%= Department.find(course.department_id).name %>
     </td>
 
     <td>

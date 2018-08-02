@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
     @course = Course.new
 
     @course.title = params.fetch("title")
+    @course.department_id = params.fetch("department_id")
 
     if @course.valid?
       @course.save
@@ -37,6 +38,7 @@ class CoursesController < ApplicationController
 
   def update_row
     @course = Course.find(params.fetch("id_to_modify"))
+    @course.department_id = params.fetch("department_id")
 
     @course.title = params.fetch("title")
 

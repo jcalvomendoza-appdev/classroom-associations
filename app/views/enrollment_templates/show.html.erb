@@ -1,0 +1,49 @@
+<h1>
+  Enrollment #<%= @enrollment.id %> details
+</h1>
+
+<a href="/enrollments/<%= @enrollment.id %>/edit">
+  Edit enrollment
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Course
+  </dt>
+  <dd>
+    <a href="/courses/<%=@enrollment.course_id%>"><%= Course.find(@enrollment.course_id).title %></a>
+  </dd>
+
+  <dt>
+    Student
+  </dt>
+  <dd>
+    <a href="/students/<%=@enrollment.student_id%>"><%= Student.find(@enrollment.student_id).first_name %></a>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@enrollment.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@enrollment.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_enrollment/<%= @enrollment.id %>">
+  Delete enrollment
+</a>
+
+<hr>
+
+<a href="/enrollments">
+  Go back
+</a>
