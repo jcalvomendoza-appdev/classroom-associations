@@ -45,7 +45,7 @@
     </td>
 
     <td>
-    <a href="/students/<%=enrollment.student_id%>"><%= Student.find(enrollment.student_id).first_name %></a>
+    <a href="/students/<%=enrollment.student_id%>"><%= Student.find(enrollment.student_id).first_name %> <%= Student.find(enrollment.student_id).last_name %></a>
     </td>
 
     <td>
