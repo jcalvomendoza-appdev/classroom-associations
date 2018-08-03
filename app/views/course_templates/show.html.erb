@@ -44,6 +44,24 @@
 <h4 class="pt-4">Roster</h4>
 <div class="list-group">
     <% Enrollment.where(course_id: @course.id).each do |enrollment| %>
-    <a href="" class="list-group-item"><%= Student.find(enrollment.student_id).first_name%></a>
+    <a href="" class="list-group-item"><%= Student.find(enrollment.student_id).first_name%> <%= Student.find(enrollment.student_id).last_name%></a>
     <% end %>
 </div>
+
+<h4 class="pt-4">Enroll a new student</h4>
+<form action="/create_enrollment" method="post">
+  <!-- Label and input for title -->
+  <div class="form-group">
+    <label for="student">
+      Student
+    </label>
+
+    <%= select_tag("student_id", options_from_collection_for_select(Student.all, :id, :last_name, @course.try(:student_id)), :class => "form-control") %>
+    or <a href="/students/new">add a new student</a> first
+  </div>
+      <input type="hidden" id="course_id" name="course_id" class="form-control" value="<%= @course.id%>">
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create enrollment
+  </button>
+</form>
